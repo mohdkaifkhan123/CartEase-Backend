@@ -27,7 +27,7 @@ const SECRET_KEY = 'SECRET_KEY';
 
 const opts = {};
 opts.jwtFromRequest = cookieExtractor;
-opts.secretOrKey = SECRET_KEY; // TODO: should not be in code;
+opts.secretOrKey = SECRET_KEY; 
 
 //middlewares
 server.use(express.static('build'))
@@ -79,7 +79,7 @@ passport.use(
             return done(null, false, { message: 'invalid credentials' });
           }
           const token = jwt.sign(sanitizeUser(user), SECRET_KEY);
-          done(null, {token}); // this lines sends to serializer
+          done(null, {id:user.id,role:user.role}); // this lines sends to serializer
         }
       );
     } catch (err) {
